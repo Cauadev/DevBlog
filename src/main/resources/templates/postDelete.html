@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+<title>DevBlog</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+	crossorigin="anonymous">
+<style>
+.breadcrumb {
+	background-color: white;
+	padding-left: 0px;
+	margin-top: 20px;
+}
+
+.card {
+	margin-top: 20px;
+}
+
+.card-subtitle {
+	font-size: 0.8rem;
+}
+
+.card-title {
+	font-weight: bold;
+	color: black;
+	padding-top: 5px;
+}
+
+*::selection {
+	color: white;
+	background-color: #006d77;
+}
+
+::-webkit-scrollbar-track {
+	background-color: black;
+}
+
+::-webkit-scrollbar {
+	width: 6px;
+	background: #F4F4F4;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #dad7d7;
+}
+
+.bg-light {
+	background-color: black !important;
+}
+
+.navbar-light .navbar-brand {
+	color: white;
+}
+
+.navbar-light .navbar-brand:hover {
+	color: white!important;
+	opacity: 80%;
+}
+
+.navbar-light .navbar-brand:focus {
+	color: white!important;
+}
+
+a{
+text-decoration: none;
+}
+
+section a:hover{
+text-decoration: underline;
+}
+
+</style>
+<body>
+	<header>
+		<!-- As a link -->
+		<nav class="navbar navbar-light bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/posts">DevBlog</a>
+			</div>
+		</nav>
+	</header>
+
+	<section>
+		<div class="container" style="width: 80%; padding-bottom: 30px;">
+
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item" aria-current="page"><a href="/posts">Posts</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Delete Post</li>
+				</ol>
+			</nav>
+		
+		<div>
+		<th:block th:include="MensagemValidacao"></th:block>
+		         <form method="post">
+                <div class="form-group">
+                    <input type="number" class="form-control" name="id" placeholder="ID">
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin-top: 10px;" formaction="/delete/post/{id}">Delete</button>
+                <a href="/posts" class="btn btn-light" role="button" style="margin-top: 10px; ">Cancelar</a>
+                <!--<button type="submit" class="btn" style="margin-top: 10px;">Cancelar</button>-->
+            </form>
+        </div>
+    </div>
+	</section>
+</body>
+</head>
+
+</html>

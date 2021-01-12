@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+<title>DevBlog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+	crossorigin="anonymous">
+
+<style>
+.breadcrumb {
+	background-color: white;
+	padding-left: 0px;
+	margin-top: 20px;
+}
+
+.card {
+	margin-top: 20px;
+}
+
+.card-subtitle {
+	font-size: 0.8rem;
+}
+
+.card-title {
+	font-weight: bold;
+	color: black;
+	padding-top: 5px;
+}
+
+*::selection {
+	color: white;
+	background-color: #006d77;
+}
+
+::-webkit-scrollbar-track {
+	background-color: black;
+}
+
+::-webkit-scrollbar {
+	width: 6px;
+	background: #F4F4F4;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #dad7d7;
+}
+
+.bg-light {
+	background-color: black !important;
+}
+
+.navbar-light .navbar-brand {
+	color: white;
+}
+
+.navbar-light .navbar-brand:hover {
+	color: white !important;
+	opacity: 80%;
+}
+
+.navbar-light .navbar-brand:focus {
+	color: white !important;
+}
+
+a {
+	text-decoration: none;
+}
+
+section a:hover {
+	text-decoration: underline;
+}
+</style>
+<body>
+	<header>
+		<!-- As a link -->
+		<nav class="navbar navbar-light bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/posts">DevBlog</a>
+				<div class="button-container">
+						<a href="/newpost" class="btn btn-primary" role="button">New Post</a>
+				</div>
+
+			</div>
+		</nav>
+	</header>
+
+	<section>
+
+		<div class="container" style="width: 80%; padding-bottom: 30px;">
+
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item active" aria-current="page">Posts</li>
+				</ol>
+			</nav>
+
+
+
+
+
+			<div class="card shadow-sm bg-white rounded"
+				th:each="post : ${posts}">
+				<div class="card-body">
+					<p class="card-subtitle mb-2 text-muted">
+						<span th:text="${post.autor}"></span> <span th:text="${post.data}"></span>
+					</p>
+
+					<a th:href="@{/posts/{id}(id=${post.id})}">
+						<h4 class="card-title">
+							<span th:text="${post.titulo}"></span>
+						</h4>
+					</a>
+
+					<p class="card-text">
+						<span th:utext="${#strings.abbreviate(post.texto,400)}"></span>
+					</p>
+
+				</div>
+			</div>
+
+		</div>
+
+	</section>
+</body>
+
+</head>
+
+</html>
