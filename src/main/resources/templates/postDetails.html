@@ -69,6 +69,7 @@
 .navbar-light .navbar-brand:focus {
 	color: white !important;
 }
+
 </style>
 <body>
 	<header>
@@ -86,9 +87,13 @@
 	</header>
 
 	<main>
-		<div class="container" style="width: 60%; margin-top: 60px">
+		<div class="container" style="width: 100%; margin-top: 60px">
 			<div class="shadow p-3 mb-5 bg-white rounded">
 				<nav aria-label="breadcrumb">
+				<div class="view-container" style="float: right;">
+				<span>Views: </span><span th:text="${post.views}"></span>
+				</div>
+				
 				<a th:href="@{/posts/delete/{id}(id=${post.id})}"><i class="material-icons">delete</i></a>
 					<ol class="breadcrumb"
 						style="background-color: white; padding-left: 0px;">

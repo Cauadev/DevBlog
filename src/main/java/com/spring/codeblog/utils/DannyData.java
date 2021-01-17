@@ -1,11 +1,5 @@
 package com.spring.codeblog.utils;
 
-import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,8 +14,8 @@ public class DannyData {
 
 //	@PostConstruct
 	public void savePosts() {
-		codeblogrepo.deleteById(9);
-		codeblogrepo.deleteById(10);
+		Post post = codeblogrepo.findById(18).get();
+		post.addView();
 	}
 
 }

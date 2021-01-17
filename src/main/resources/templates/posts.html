@@ -82,7 +82,8 @@ section a:hover {
 			<div class="container-fluid">
 				<a class="navbar-brand" href="/posts">DevBlog</a>
 				<div class="button-container">
-						<a href="/newpost" class="btn btn-primary" role="button">New Post</a>
+					<a href="/newpost" class="btn btn-primary" role="button">New
+						Post</a>
 				</div>
 
 			</div>
@@ -106,6 +107,9 @@ section a:hover {
 			<div class="card shadow-sm bg-white rounded"
 				th:each="post : ${posts}">
 				<div class="card-body">
+					<div class="view-container" style="float: right;">
+						<span>Views: </span><span th:text="${post.views}"></span>
+					</div>
 					<p class="card-subtitle mb-2 text-muted">
 						<span th:text="${post.autor}"></span> <span th:text="${post.data}"></span>
 					</p>

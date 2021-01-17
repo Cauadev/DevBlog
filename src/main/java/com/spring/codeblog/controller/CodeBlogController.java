@@ -11,12 +11,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.codeblog.model.Post;
-import com.spring.codeblog.repository.CodeBlogRepository;
 import com.spring.codeblog.service.CodeBlogService;
 
 @Controller
@@ -28,15 +26,18 @@ public class CodeBlogController {
 	@RequestMapping(value = "/posts", method = RequestMethod.GET)
 	public ModelAndView getPosts(){
 	  ModelAndView mv = new ModelAndView("posts");
-	  List<Post> posts = codeblogservice.findAll();
+	  List<Post> posts = codeblogservice.getAllPosts();
 	  mv.addObject("posts", posts);
 	  return mv;
 	 }
+	
 	
 	@RequestMapping(value = "/posts/{id}", method = RequestMethod.GET)
 	public ModelAndView getPostById(@PathVariable int id) {
 		ModelAndView mv = new ModelAndView("postDetails");
 		Post post = codeblogservice.findById(id);
+		post.addView();
+		codeblogservice.update(post);
 		mv.addObject("post", post);
 		return mv;
 	}
@@ -53,9 +54,11 @@ public class CodeBlogController {
 			return "redirect:/newpost";
 		}
 		post.setData(LocalDate.now());
+		post.setViews(0);
 		codeblogservice.save(post);
 		return "redirect:/posts";
 	}
+	
 	
 	@RequestMapping(value = "posts/delete/{id}")
 	public String getDeletePost(@PathVariable int id) {

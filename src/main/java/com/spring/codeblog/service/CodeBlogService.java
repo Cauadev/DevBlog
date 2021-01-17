@@ -13,5 +13,9 @@ public interface CodeBlogService {
 	Post save(Post post);
 	
 	void deleteById(int id);
-
+	
+	void update(Post post);
+	
+	List<Post> getAllPosts();
+	
 }

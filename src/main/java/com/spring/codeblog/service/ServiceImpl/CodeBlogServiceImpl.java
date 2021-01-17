@@ -35,4 +35,14 @@ public class CodeBlogServiceImpl  implements CodeBlogService{
 		codeblogrepository.deleteById(id);
 	}
 
+	@Override
+	public void update(Post post) {
+		post = findById(post.getId());
+		save(post);
+	}
+
+	@Override
+	public List<Post> getAllPosts() {
+		return codeblogrepository.getPosts();
+	}
 }

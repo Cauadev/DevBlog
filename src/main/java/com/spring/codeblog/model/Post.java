@@ -2,6 +2,7 @@ package com.spring.codeblog.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +20,9 @@ public class Post {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	
+	@Column(name = "views",nullable = false)
+	private Integer views;
 	
 	@NotBlank
 	private String titulo;
@@ -86,6 +90,20 @@ public class Post {
 
 	public void setTexto(String texto) {
 		this.texto = texto;
+	}
+
+
+	public int getViews() {
+		return views;
+	}
+
+
+	public void setViews(int views) {
+		this.views = views;
+	}
+	
+	public void addView() {
+		setViews(getViews()+1);;
 	}
 	
 	
